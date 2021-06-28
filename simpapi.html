@@ -58,7 +58,7 @@
             text-align: justify;
         }
         article {
-            max-width: 700px;
+            max-width: 850px;
             padding: 30px;
             margin: 0 auto;
         }
@@ -77,6 +77,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="skills.html">Skills</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
     </header>
     <article>
@@ -124,10 +125,36 @@
         <h4>e) Make An Order</h4>
         <p>Let's order the book that we just found, since it is available.</p>
         <img src="https://anthonyw0001.github.io/simpapi/postman15.png" style="width: 100%">
+        <p>Now that we have an order ID, let's set it as a variable that we can use for future requests so that we don't have to type it out.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman16.png" style="width: 100%">
+        <p>Also, let's use the test script to reset our variable to use the latest order ID everytime we make a new order.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman23.png" style="width: 100%">
         <h4>f) Get All Book Orders</h4>
+        <p>We can see all of the orders and confirm that the previous request worked and that our order was saved, as well as what other people have ordered.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman17.png" style="width: 100%">
         <h4>g) Get Single Order</h4>
+        <p>We can look at our order by itself thanks to the Order ID variable we set earlier.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman18.png" style="width: 100%">
         <h4>h) Update An Order</h4>
+        <p>We only gave the name John when we made our order, let's be a bit more professional. We can update our order to include a lastname using this {{$randomLastname}} function, Postman will generate a random lastname for us so we don't need to type one ourselves.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman19.png" style="width: 100%">
+        <p>Since we only get a 204 Status, let's use the Get Order request to check if it worked.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman20.png" style="width: 100%">
+        <p>As you can see, our order now says "John Muller" instead of just "John", Postman successfully created a lastname for our client.</p>
         <h4>i) Delete An Order</h4>
+        <p>We can't just leave all these dodgy test orders on Valentin's server, we ought to clean up after ourselves. Let's delete our order now that we're done with it.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman21.png" style="width: 100%">
+        <p>Once again we simply get a 204 status, so let's run a Get Order request.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/Postman22.png" style="width: 100%">
+        <p>Finally we get a 404 status, confirming that our order has been deleted because it can no longer be found.</p>
+        <h3>Step 3: Using the Runner</h3>
+        <p>Up until now, we've been making and testing our HTTP requests, but now we have to show how we can do automated testing. We need to be able to do the whole process of making an order and checking it over and over, with many variations, in quick succession. We can do that using the runner. Let's import our collection into the runner, we'll deactivate our Authentication request since it's not needed, and we'll say... I don't know... 20 iterations. This means that Postman will automate our requests twenty times over.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman24.png" style="width: 100%">
+        <p>And finally...</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman25.png" style="width: 100%">
+        <p>The test was a success, all iterations passed. If we wanted to we could try again with other parameters, such as random first names, trying different book IDs to see if we can order books that aren't in stock, we can write a custom list of strings for Postman to use. But this is the basics of API testing.<br>
+        <br>
+        Read the documentation, make the requests, set variables and write pre-request and test scripts, and use the Runner to automate the tests.</p>
     </article>
 </body>
 </html>
