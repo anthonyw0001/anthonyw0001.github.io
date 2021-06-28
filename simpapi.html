@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Williams</title>
+    <style>
+        header {
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin: 0 auto;
+            background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(5, 8, 206) 50%, rgb(0, 174, 255) 100%);
+        }
+        li {
+            display: inline-block;
+            padding: 0px 50px 0px 50px;
+            font-size: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: aqua;
+        }
+        a:link {
+            color: aqua;
+        }
+        a:hover {
+            color: rgb(255, 208, 0);
+        }
+        a:active {
+            color: white;
+        }
+        h1 {
+            font-size: 50px;
+            color: white;
+            text-align: left;
+        }
+        h2 {
+            font-size: 26px;
+            color: whitesmoke;
+        }
+        h3 {
+            font-size: 20px;
+            color: grey;
+        }
+        h4 {
+            font-size: 16px;
+            color: grey;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: whitesmoke;
+            background-color: black;
+            text-align: justify;
+        }
+        article {
+            max-width: 700px;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anthony Williams</h1>
+        <h2>(Work In Progress)</h2>
+        <ul>
+            <li><a href="work.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+    <article>
+        <h2>Simple Books API</h2>
+        <h4>Postman</h4>
+        <p>Simple Books is a demonstration API (<em>Application Programming Interface</em>) created by Valentin Despa of freeCodeCamp.org. Simple Books is hosted at https://simple-books-api.glitch.me but can also be downloaded from Valentin's github and hosted locally. On this project I used his API to demonstrate the capabilities of the Postman tool, and how it can be used to test APIs.</p>
+        <h3>Step 1: Variables</h3>
+        <p>There are many features in Postman that allow work to be organised and automated more effectively. One of the most powerful of these are variables, which can be set to allow long or dynamic pieces of information to be typed using placeholder shorthand. In this case, I've chosen to put a variable for the URL of the Simple Books site so it does not need to be typed out for every request I will make.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman1.png" style="width: 100%">
+        <h3>Step 2: Making Requests</h3>
+        <p>In Postman we can write HTTP requests to a server, save them, send them as needed, and see the response. Before we can begin testing, let's check the <a href="https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md">documentation</a> on Valentin's Github, and make a request for each one listed in the documentation and see that it works as intended.</p>
+        <h4>a) Status Check</h4>
+        <p>The first request listed in the documentation allows us to ping the server and see that the API is running and working properly. Here is the request as it will look in Postman.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman2.png" style="width: 100%">
+        <p>Let's send this request and see the response.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman4.png" style="width: 100%">
+        <p>As expected, we recieve an HTTP Status of 200, confirming that our request was OK, and we also see in the body that the Status of the server is OK.<br>
+        <br>
+        We can also send this request again with a test script, this allows the reading of the JSON body to be automated with JavaScript, so that we can filter out the specific information we were looking for. Here is what a test script would look like for this request.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman3.png" style="width: 100%">
+        <p>And now the result.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman5.png" style="width: 100%">
+        <p>As you can see, our code specifically checks the HTTP Status, to make sure it is 200 as expected, and it also checks the JSON data for the word "OK", since we know to expect that as well. Postman sends the outcomes of our test script to the test results page where we can see it easily.</p>
+        <h4>b) Authentication</h4>
+        <p>To go any further with our project, we have to go right to the bottom of the documentation, and create an authentication request, so we can get an access token, which will be needed to make the next requests. This won't be a simple GET request, but rather a POST request, which requires us to write data in JSON format for the API to read. Here's what the request looks like with the body.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman6.png" style="width: 100%">
+        <p>Since we are sending data to the server, we expect a 201 status, showing acknowledgement that we actually sent something to it. Let's adapt our test script with this in mind.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman7.png" style="width: 100%">
+        <p>And now the result.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman9.png" style="width: 100%">
+        <p>It looks as if I've gone wrong somewhere, we have a 409 conflict status instead of a 201, this means I haven't recieved an Access Token, and my request was a failure. Let's check the body anyway.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman8.png" style="width: 100%">
+        <p>Of course! According to the body, there has been an error, because I have already registered and created an access token for myself. Let's add it to our variables and continue.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman10.png" style="width: 100%">
+        <h4>c) List of Books</h4>
+        <p>This GET Command allows us to see the books that Simple Books has. In the JSON body we can see a book's title, ID, whether or not it is in stock, and whether or not it is a fiction book.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman11.png" style="width: 100%">
+        <p>If we change our Query Parameters, we can also filter out information, here I've specified that I only want 2 Non-Fiction books to demonstrate. As you can see the API accepts our parameters and only sends back the books we asked for.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman12.png" style="width: 100%">
+        <h4>d) Get Single Book</h4>
+        <p>This GET Command lets us choose one of the books we saw in the previous list by using it's ID, and see more information.</p>
+        <img src="https://anthonyw0001.github.io/simpapi/postman13.png" style="width: 100%">
+        <h4>e) Make An Order</h4>
+        <h4>f) Get All Book Orders</h4>
+        <h4>g) Get Single Order</h4>
+        <h4>h) Update An Order</h4>
+        <h4>i) Delete An Order</h4>
+    </article>
+</body>
+</html>
