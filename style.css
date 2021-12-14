@@ -1,35 +1,43 @@
 body {
 
-    background-color: black;
+    background: linear-gradient(white 0%, white 12%, black 45%);
 
 }
 
 #logo {
 
-    background-image: url(examin-logo.png);
-    width: 300px;
-    height: 86px;
-    margin: auto;
+    width: 50%;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding-bottom: 15%;
+
+}
+
+#examin-logo {
+
+    width: 100%;
+    height: auto;
 
 }
 
 #qr-reader {
 
-    margin: auto;
+    margin: 10%;
 
 }
 
-#qr-reader-result {
+/* #qr-reader-result {
 
     margin: auto;
 
-}
+} */
 
 #export-csv {
 
-    margin-top: 20px;
-    margin-left: 30%;
-    width: 40%;
-    padding: 10px;
+    font-size: 28px;
+    margin-top: 30%;
+    margin-left: 25%;
+    width: 50%;
+    padding: 5%;
 
 }
